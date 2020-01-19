@@ -1,6 +1,7 @@
 
 
 function detail(){
+    loadHome();
     var dat = document.cookie.split("=");
     alert(dat[1]);
    
@@ -29,23 +30,27 @@ function detail(){
 function UIfunction(details){
     console.log(details)
      const container = createTags('div','class', 'container');
-     var email = details.email;
-     var fname = details.firstName;
-     var lname = details.lastName;
-     console.log(details["email"]);
+     var player = JSON.parse(details); 
+     var fname = player.firstName;
+     var lname = player.lastName;
+     var name = fname+" "+lname;
+     var email = player.email;
      console.log(fname);
-     console.log(lname);
-     appendChildToParent(main,container)
+
+     appendChildToParent(document.body,container)
      const card = createTags('div','class', 'card')
      
      const imdiv = createTags('div','class','imdiv')
 
-     const h2 = dataValidation(name,nullData,'h2','class','h2h3','h3','class','pnmae');
+     const h2 = dataValidation(name,"N A",'h2','class','h2h3','h3','class','pnmae');
 
-     const p = dataValidation(email,nullData,'p','class','ph3','p','class','pemail');
+     const p = dataValidation(email,"N A",'p','class','ph3','p','class','pemail');
 
      const txtdiv = createTags('div','class','txtdiv');
 
+     const imgVal = dataValidation(details.image,"N A",'h1','class','imgh3','img','class','img');
+
+     //const
 
      appendChildToParent(container,card)
      
