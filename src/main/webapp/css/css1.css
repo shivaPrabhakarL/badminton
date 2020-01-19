@@ -1,0 +1,125 @@
+#header{
+    background-color: rgb(13, 13, 14);
+    height : 13%;
+    box-shadow:0 4px 8px 0 rgba(24, 24, 24, 0.56);
+    width: 125%;
+    justify-content: space-between;
+}
+
+table{
+    margin-left: 25%;
+    width: 50%;
+    text-align: start;
+}
+tr{
+    height: 5%;
+    margin-bottom: 17px;
+}
+
+#loginBtn{
+    margin-left: 120%;
+    margin-top: 20%;
+}
+
+#signBtn{
+    margin-left: 130%;
+    margin-top: 20%;
+}
+
+form{
+    align-content: center;
+    height: 100%;
+    width: 100%;
+    margin: 0%;
+}
+
+#signupdiv{
+    background-color: rgb(223, 235, 235);
+    height : 75%;
+    width: 44%;
+    margin-left: 0%;
+    float:right;
+    margin-left: 20px;
+    margin-top:30px;
+    margin-right: 17px;
+    box-shadow:0 4px 8px 0 rgba(0,0,0,0.56);
+    
+}
+
+#logindiv{
+    background-color: rgb(225, 235, 233);
+    height : 75%;
+    width: 45%;
+    margin-left: 17px;
+    margin-top:30px;
+    float:left;
+    box-shadow:0 4px 8px 0 rgba(0,0,0,0.56);
+}
+
+#d1{
+    width: 98%;
+}
+
+.mainh1{
+    margin-top: 0px;
+    margin-left: 25%;
+    color: #fff;
+    text-align: center !important;
+
+}
+
+#main{
+    display: inline-block;
+    background: url("badminton1.jpg") no-repeat fixed ;
+    background-position: 0px center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    padding-bottom: 60px;
+    padding-top: 50px;
+    min-height: 505px;
+    opacity: 0.45;
+}
+
+#himg{
+    width: 70px;
+    height: 70px;
+    margin-left: 340px;
+    margin-top: 2px;
+    margin-bottom: 50px;
+}
+
+#hh1{
+    color: rgba(247, 239, 239, 0.7);
+    width: 440px;
+    height: 100px;
+    margin-left: 10%;
+    margin-top: 25px;
+    margin-bottom: 0px;
+    margin-right: 60%;
+    font-size: xx-large;
+}
+
+#login{
+    color: rgba(248, 242, 242, 0.7);
+    width: 150px;
+    height: 30px;
+    margin-left: 170%;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    font-size: large;
+}
+
+#signup{
+    color: rgba(243, 230, 230, 0.7);
+    width: 425px;
+    height: 50px;
+    margin-left: 40%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: large;
+}
+
