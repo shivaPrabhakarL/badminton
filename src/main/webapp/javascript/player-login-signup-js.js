@@ -330,10 +330,12 @@ function validatePlayerLogIn(){
                   password : password
           }, function(responseText) {
                     alert(responseText);
-                   // e.preventDefault();
+                    e.preventDefault();
 
                     console.log(responseText);
                if(responseText=="s"){
+                      
+                      alert("login");
                         window.location.replace("playerDetails.html");
                         }
                 else{

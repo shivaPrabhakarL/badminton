@@ -12,29 +12,16 @@ public class Player {
     private String phone;
     private String type; //Captain, Offense, Defense, Beginner, Marquee.
     private String shirtSize;
-    private int empId;
-    private int age;
-    private int matchesPlayed;
-    private int position;
-    private int bidStatus; // 1->Sold 0->NotSold -1->did not face bidding, Set to -1 in database as default, Change to 0 when player faces bidding
+    private String empId;
+    private String age;
+    private String matchesPlayed;
+    private String position;
+    private String bidStatus; // 1->Sold 0->NotSold -1->did not face bidding, Set to -1 in database as default, Change to 0 when player faces bidding
     private String password;
 
-    Player(){}
+    public Player(){}
 
-    Player(String firstName, String lastName, String email, String gender, String image,
-           String phone, String shirtSize, int empId, int age, String password)
-    {
-        this.firstName=firstName;
-        this.lastName=lastName;
-        this.email=email;
-        this.gender=gender;
-        this.image=image;
-        this.phone=phone;
-        this.shirtSize=shirtSize;
-        this.empId=empId;
-        this.age=age;
-        this.password=password;
-    }
+
 
     public String getFirstName() {
         return firstName;
@@ -108,43 +95,43 @@ public class Player {
         this.shirtSize = shirtSize;
     }
 
-    public int getEmpId() {
+    public String getEmpId() {
         return empId;
     }
 
-    public void setEmpId(int empId) {
+    public void setEmpId(String empId) {
         this.empId = empId;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
-    public int getMatchesPlayed() {
+    public String getMatchesPlayed() {
         return matchesPlayed;
     }
 
-    public void setMatchesPlayed(int matchesPlayed) {
+    public void setMatchesPlayed(String matchesPlayed) {
         this.matchesPlayed = matchesPlayed;
     }
 
-    public int getPosition() {
+    public String getPosition() {
         return position;
     }
 
-    public void setPosition(int position) {
+    public void setPosition(String position) {
         this.position = position;
     }
 
-    public int getBidStatus() {
+    public String getBidStatus() {
         return bidStatus;
     }
 
-    public void setBidStatus(int bidStatus) {
+    public void setBidStatus(String bidStatus) {
         this.bidStatus = bidStatus;
     }
 
@@ -154,5 +141,25 @@ public class Player {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return  ("{  \"firstName\" : \" "+ firstName +
+                "\", \"lastName\" : \"" + lastName +
+                "\", \"email\" : \"" + email +
+                "\", \"gender\" : \"" + gender +
+                "\", \"team\" : \"" + team +
+                "\", \"image\" : \""+image+
+                "\" ,\"phone\" : \""+phone+
+                "\", \"type\" : \""+type+
+                "\",\"shirtSize\" : \""+shirtSize+
+                "\", \"empid\" : \""+empId+
+                "\", \"age\" : \""+age+
+                "\", \"matchesPlayed\" : \""+matchesPlayed+
+                "\", \"position\" : \""+position+
+                "\", \"bidStatus\" : \""+bidStatus+
+                "\" , \"password\" : \""+ password+"\" }")
+                ;
     }
 }

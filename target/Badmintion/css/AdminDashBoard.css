@@ -1,0 +1,48 @@
+.cards
+{
+    display: inline-block;
+    margin: 2%;
+    border: 6px solid rgb(149, 218, 149);
+    border-radius: 50px;
+    text-align: center;
+    background-color: lightslategray;
+}
+
+.cards:hover
+{
+    box-shadow: 0 0 8px 6px rgb(187, 255, 0);
+    transform: scale(1.1);
+}
+
+.tasklogo
+{
+    border-color: lightcoral;
+    max-width:300px;
+    max-height:300px;
+    border-radius: 50px;
+    background-color: rgb(165, 156, 148);
+    
+}
+
+.container
+{
+    background-image: url("https://cdn1.epicgames.com/ue/item/Badminton_Screenshot_1-1920x1080-2cf8892509c158692884b8d9548cf005.png");
+    display: inline-block;
+    width: 100%;
+    background-size:auto;
+    
+}
+
+body
+{
+
+    align-content: center;
+    background-size:cover;
+    width: 100%;
+    height: 100%;
+}
+
+h2
+{
+    align-content: center;
+}

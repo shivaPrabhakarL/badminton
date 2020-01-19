@@ -1,0 +1,27 @@
+function request(config) {
+
+    $.ajax({
+        method: config.method,
+        data: config.data,
+        url: config.url,
+
+    },
+        config.sucessCallBack,
+        config.erroCallback
+    )
+}
+
+
+request({
+    method: '',
+    data: {},
+    cu
+})
+
+
+function formRequest(){
+
+    $.ajax({
+
+    });
+}

@@ -26,6 +26,7 @@ public class PlayerLogIn extends HttpServlet {
         System.out.println("after login check");
         if(result)
         {
+
             Cookie cUserName = new Cookie("cookuser", email.trim());
          //   Cookie cPassword = new Cookie("cookpass", email.trim());
             cUserName.setMaxAge(60 * 60 * 24 * 15);// 15 days
@@ -34,8 +35,9 @@ public class PlayerLogIn extends HttpServlet {
            // resp.addCookie(cPassword);
             HttpSession httpSession = req.getSession();
             httpSession.setAttribute("sessuser", email.trim());
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("AdminDashboard.html");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("playerDetails.html");
             requestDispatcher.forward(req, resp);
+            System.out.println("cookie enabled");
             out.write("s");
         }
         else
