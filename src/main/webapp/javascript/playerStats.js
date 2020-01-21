@@ -50,7 +50,9 @@ function makeui(jsonData)
         var bid = player.bidStatus;
         var role = player.role;
         var uid = player.userId;
-
+        var tour = player.tournament;
+        console.log(tour);
+        //alert(tour);
         var x = document.createElement('div');
         x.setAttribute('class','bdiv');
 
