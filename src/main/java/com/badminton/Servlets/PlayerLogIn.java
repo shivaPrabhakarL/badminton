@@ -16,11 +16,15 @@ public class PlayerLogIn extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("getQueryString = "+req.getQueryString());
-        PrintWriter out = resp.getWriter();
 
+        PrintWriter out = resp.getWriter();
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-
+        System.out.println("-------------------------->>>>>>>>>>>>"+req.getMethod());
+        System.out.println("i/p stream "+String.valueOf(req.getInputStream()));
+        System.out.println(email);
+        System.out.println(password);
+        System.out.println("--------------------------");
         PlayerDB database = new PlayerDB();
         System.out.println("before login check");
         boolean result = database.checkLogin(email,password);

@@ -145,7 +145,7 @@ function TournamentForm()
     `
     <div id="id01" class="modal">
   
-  <form class="modal-content animate"  method="post">
+  <div class="modal-content animate"  method="post">
     <div class="container">
       <label for="trnName"><b>Tournament Name</b></label>
       <input type="text" placeholder="Enter Tournament" name="trnName" id="tnmae" required>
@@ -159,7 +159,7 @@ function TournamentForm()
       <label for="runPrize"><b>Runner-up Prize Money</b></label>
       <input type="text" placeholder="Enter Runner Prize Money" name="runPrize" id="trunp" required>
         
-      <button type="submit" id= "createtour" onclick="onclickF()">Create Tournament!</button>
+      <button type="button" id= "createtour" onclick="onclickF()">Create Tournament!</button>
       
     </div>
 
@@ -167,7 +167,7 @@ function TournamentForm()
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
       <span class="psw"> Your Role will be changed to Admin After creating Tournament</span>
     </div>
-  </form>
+  </div>
 </div>
 
     
@@ -228,7 +228,7 @@ $(document).on("click","#tbutton", function(){
 
 });
 
-function onclickF(){
+function onclickF(e){
 
  
 
@@ -237,8 +237,8 @@ function onclickF(){
      var tourWinP = $('#twinp').val();
      var tourRunP = $('#trunp').val();
     var email = document.cookie.split("=")[1];
-        console.log("get method");
-        alert("get method");
+        console.log("post method");
+        alert("post method"); 
           $.post('CreateTournament', {
             trnName : tourName,
             tloc : tourLoc,

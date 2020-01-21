@@ -38,10 +38,12 @@ public class CreateTournament extends HttpServlet {
 
         cTourName.setMaxAge(60 * 60 * 24 * 15);// 15 days
         resp.addCookie(cTourName);
-       // RequestDispatcher requestDispatcher = req.getRequestDispatcher("AdminDashboard.html");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("AdminDashboard.html");
         System.out.println("tour cookie= "+cTourName.getValue());
-        //requestDispatcher.forward(req, resp);
-        p.write("s");
+         requestDispatcher.forward(req, resp);
+        String respString = "s";
+        System.out.println(respString);
+        p.write(respString);
     }
 
 }

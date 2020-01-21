@@ -5,8 +5,15 @@ function AdminDash(){
      var d = document.cookie.split(" ");
      var email = d[0].split("=");
      var name = d[1].split("=");
-
-    if(email != null || name != null){
+    var cooks = document.cookie.split(";");
+    var flag = false;
+    for(let i=0;i<cooks.length;i++){
+        var valOfCook = cooks[i].trim().split("=");
+        if(valOfCook[1].includes("@") || valOfCook[1] != null || valOfCook != ""){
+            flag = true;
+        }
+    }
+    if(flag === false){
         window.location.replace("index.html");
         
     }
