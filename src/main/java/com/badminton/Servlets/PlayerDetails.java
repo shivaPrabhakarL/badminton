@@ -24,24 +24,29 @@ import com.google.gson.JsonSyntaxException;
 import java.lang.NumberFormatException;
 import java.sql.*;
 
-@WebServlet(name = "AdminLogIn",urlPatterns = "/AdminLogIn")
-public class AdminLogIn extends HttpServlet{
-    Player player;
+@WebServlet(name = "PlayerDetails",urlPatterns = "/PlayerDetails")
+public class PlayerDetails extends HttpServlet{
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, JsonSyntaxException, NumberFormatException, NullPointerException {
 //        RequestDispatcher requestDispatcher;
 //        requestDispatcher = req.getRequestDispatcher("/adminReg.html");
 //        requestDispatcher.forward(req, resp);
+
         PlayerDB database = new PlayerDB();
        String s = (req.getParameter("data"));
-        System.out.println(s);
+
         PrintWriter p = resp.getWriter();
+
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
         Gson gson = builder.create();
+
         ResultSet str = database.getDetails(s);
-        Player play = createPlayer(str);
+
+        Player player = new Player();
+        Player play = player.createPlayer(str);
         System.out.println(play.toString());
         //Player player;
         try {
@@ -58,29 +63,5 @@ public class AdminLogIn extends HttpServlet{
 
     }
 
-    public Player createPlayer(ResultSet res){
-        Player player = new Player();
-        try {
 
-            player.setFirstName(res.getString("firstName"));
-            player.setLastName(res.getString("lastName"));
-            player.setEmail(res.getString("email"));
-            player.setGender(res.getString("gender"));
-            player.setTeam(res.getString("team"));
-            player.setImage(res.getString("image"));
-            player.setPhone(res.getString("phone"));
-            player.setType(res.getString("type"));
-            player.setShirtSize(res.getString("shirtSize"));
-            player.setEmpId(res.getString("empId"));
-            player.setAge(res.getString("age"));
-            player.setMatchesPlayed(res.getString("matchesPlayed"));
-            player.setPosition(res.getString("position"));
-            player.setBidStatus(res.getString("bidStatus"));
-            player.setPassword(res.getString("password"));
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-        return player;
-    }
 }

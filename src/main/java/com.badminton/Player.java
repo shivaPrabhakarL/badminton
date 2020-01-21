@@ -1,5 +1,7 @@
 package com.badminton;
 
+import java.sql.*;
+
 public class Player {
 
 
@@ -143,6 +145,8 @@ public class Player {
         this.password = password;
     }
 
+
+
     @Override
     public String toString() {
         return  ("{  \"firstName\" : \" "+ firstName +
@@ -158,8 +162,34 @@ public class Player {
                 "\", \"age\" : \""+age+
                 "\", \"matchesPlayed\" : \""+matchesPlayed+
                 "\", \"position\" : \""+position+
-                "\", \"bidStatus\" : \""+bidStatus+
-                "\" , \"password\" : \""+ password+"\" }")
+                "\", \"bidStatus\" : \""+bidStatus+"\" }")
                 ;
+    }
+
+    public Player createPlayer(ResultSet res){
+        Player player = new Player();
+        System.out.println("in create player ");
+        try {
+            player.setFirstName(res.getString("firstName"));
+            player.setLastName(res.getString("lastName"));
+            player.setEmail(res.getString("email"));
+            player.setGender(res.getString("gender"));
+            player.setTeam(res.getString("team"));
+            player.setImage(res.getString("image"));
+            player.setPhone(res.getString("phone"));
+            player.setType(res.getString("type"));
+            player.setShirtSize(res.getString("shirtSize"));
+            player.setEmpId(res.getString("empId"));
+            player.setAge(res.getString("age"));
+            player.setMatchesPlayed(res.getString("matchesPlayed"));
+            player.setPosition(res.getString("position"));
+            player.setBidStatus(res.getString("bidStatus"));
+            player.setPassword(res.getString("password"));
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            //player = null;
+        }
+        return player;
     }
 }

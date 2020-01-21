@@ -1,9 +1,15 @@
 //window.onload = showDisplay();
 
 function AdminDash(){
-    var cookie = document.cookie;
-    if(cookie.length<2)
+     var da = document.cookie.split("=");
+     var d = document.cookie.split(" ");
+     var email = d[0].split("=");
+     var name = d[1].split("=");
+
+    if(email != null || name != null){
         window.location.replace("index.html");
+        
+    }
     else{
         loadHome();
         showDisplay();

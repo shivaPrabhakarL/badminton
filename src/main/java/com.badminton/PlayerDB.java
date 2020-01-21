@@ -1,7 +1,6 @@
 package com.badminton;
 
 import java.sql.*;
-import com.google.gson.Gson;
 
 
 public class PlayerDB {
@@ -14,6 +13,17 @@ public class PlayerDB {
         stmt = db.dbConnection();
     }
 
+    public ResultSet getAllPlayers() {
+        try {
+            String query = "select * from users where role='player' order by position asc ";
+            ResultSet rs = stmt.executeQuery(query);
+            return rs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
 
 
 
@@ -53,6 +63,7 @@ public class PlayerDB {
 
     public boolean checkLogin(String email, String password)  {
         try {
+            System.out.println(email);
             String query = "select password from users where email = \"" + email +"\";";
             System.out.println("query = "+query);
             ResultSet rs = stmt.executeQuery(query);
@@ -102,57 +113,40 @@ public class PlayerDB {
     }
 
     public ResultSet getDetails(String email){
-        //Gson json = new Gson();
-
         try {
-            String query = "select * from users where email = \""+email+"\"";
+            String query = "select * from users where email = '"+email+"'";
             System.out.println(query);
             ResultSet rs = stmt.executeQuery(query);
-            String ret = "";
-            if(rs.next()){
-                ret += "{ \"firstName\" : \""+rs.getString("firstName");
-                ret += "\", \"lastName\" : \""+rs.getString("lastName");
-                ret += "\", \"email\" : \""+rs.getString("email");
-                ret += "\", \"gender\" :  \""+rs.getString("gender");
-                ret += "\", \"team\" : \""+rs.getString("team");
-                ret += "\", \"image\" : \""+rs.getString("image");
-                ret += "\", \"phone\" : \""+rs.getString("phone");
-                ret += "\", \"type\" : \""+rs.getString("type");
-                ret += "\", \"shirtSize\" : \""+rs.getString("shirtSize");
-                ret += "\", \"empId\" : \" "+rs.getString("empId");
-                ret += "\", \"age\" : \" "+rs.getString("age");
-                ret += "\", \"matchesPlayed\" : \" "+rs.getString("matchesPlayed");
-                ret += "\", \"position\" : \" "+rs.getString("position");
-                ret += "\", \"bidStatus\" : \" "+rs.getString("bidStatus");
-                ret += "\", \"password\" : \" "+rs.getString("password")+"\" }" ;
-
-
-
+            if(rs.next()) {
+                return rs;
+            }else{
+                return null;
             }
-            return rs;
 
         }catch(SQLException s){
-            String ret ="";
-            ret += "{\"firstName\" : \" null\"";
-            ret += "\", \"lastName\" : \" null\"";
-            ret += "\", \"email\" : \"null\"";
-            ret += "\", \"gender\" :  \"null\"";
-            ret += "\", \"team\" : \"null\"";
-            ret += "\", \"image\" : \"null\"";
-            ret += "\", \"phone\" : \"null\"";
-            ret += "\", \"type\" : \"null\"";
-            ret += "\", \"shirtSize\" : \"null\"";
-            ret += "\", \"empId\" : \" null\"";
-            ret += "\", \"age\" : \" null\"";
-            ret += "\", \"matchesPlayed\" : \" null\"";
-            ret += "\", \"position\" : \" null\"";
-            ret += "\", \"bidStatus\" : \" null\"";
-            ret += "\", \"password\" : \" null\"" ;
-            System.out.println(ret);
-            //return null;
+            s.printStackTrace();
             return null;
         }
     }
+
+    public String empIdOfPlayer(String email){
+        String query = "select empId from users where email = '"+ email +"' ;";
+        System.out.println(query);
+        try {
+            ResultSet rs = stmt.executeQuery(query);
+            if(rs.next()) {
+                String empId = rs.getString("empId");
+                return empId;
+            }
+            else{
+                return "";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+
 
 
 }
