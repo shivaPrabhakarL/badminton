@@ -62,6 +62,13 @@
   padding: 3%;
 }
 
+#adminbtn{
+  float: right;
+  margin-right: 35%;
+  margin-top: 6%;
+  padding: 3%;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 

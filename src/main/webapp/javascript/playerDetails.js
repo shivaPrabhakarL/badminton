@@ -2,7 +2,8 @@
 
 function detail(){
     loadHome();
-    var dat = document.cookie.split("=");
+    var d = document.cookie.split(";");
+    var dat = d[0].split("=");
     //alert(dat[1]);
    
         $.get('PlayerDetails', {
@@ -116,14 +117,19 @@ function UIfunction(details){
     tdiv.setAttribute('id','tdiv');
     var tbutton = document.createElement('input');
     tbutton.setAttribute('id','tbutton');
-    tbutton.setAttribute('type','submit');
+    tbutton.setAttribute('type','button');
     tbutton.setAttribute('value','Create Tournament');
   //  tbutton.setAttribute('onclick','TournamentForm()')
    // tbutton.setAttribute('name',"Create Tournament");
 
-
+  
+   var adminbtn = document.createElement('input');
+   adminbtn.setAttribute('id','adminbtn');
+   adminbtn.setAttribute('type','button');
+   adminbtn.setAttribute('value','Admin Dashboard');
 
     //document.body.appendChild(tdiv);
+    tdiv.appendChild(adminbtn);
     tdiv.appendChild(tbutton);
 
 
@@ -135,6 +141,37 @@ function UIfunction(details){
 
     document.body.appendChild(container);
 
+}
+
+function oldTour(){
+    var newtndiv = document.createElement('div');
+    newtndiv.innerHTML =
+  
+    `
+    <div id="id01" class="modal">
+  
+  <div class="modal-content animate" >
+    <div class="container">
+      <label for="trnName"><b>Tournament Name</b></label>
+      <input type="text" placeholder="Enter Tournament" name="trnName" id="tnmae" required>
+
+        
+      <button type="button" id= "createtour" onclick="goToTour()">Create Tournament!</button>
+      
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw"> Go to created Tournament</span>
+    </div>
+  </div>
+</div>
+
+    
+ 
+    `
+
+  document.body.appendChild(newtndiv);
 }
 
 
@@ -219,6 +256,13 @@ function createTags(ele,selector,name){
 
 }
 
+$(document).on("click","#adminbtn", function(){
+  
+    oldTour();
+    document.getElementById('id01').style.display='block';
+      
+ 
+ });
 
 $(document).on("click","#tbutton", function(){
   
@@ -228,6 +272,8 @@ $(document).on("click","#tbutton", function(){
 
 });
 
+
+
 function onclickF(e){
 
  
@@ -236,7 +282,12 @@ function onclickF(e){
      var tourLoc = $('#tloc').val();
      var tourWinP = $('#twinp').val();
      var tourRunP = $('#trunp').val();
+     var d = document.cookie.split(";");
+     if(d[1] == null){
     var email = document.cookie.split("=")[1];
+     }else{
+         var email= d[0].split("=")[1];
+     }
         console.log("post method");
         alert("post method"); 
           $.post('CreateTournament', {

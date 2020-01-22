@@ -21,7 +21,7 @@ public class TeamsDB {
         try {
             // stmt.executeUpdate("truncate table TaskList");
             String query = "create table teamtable(" +
-                    "TeamId  INT AUTO_INCREMENT PRIMARY KEY,Name varchar(255) NOT NULL, MatchesPlayed INT, Wins Int, Losses INT, Position INT, Points INT, empId INT UNIQUE, FOREIGN KEY (empId) REFERENCES plTemp(empId)  )";
+                    "TeamId  INT AUTO_INCREMENT PRIMARY KEY,Name varchar(255) NOT NULL, MatchesPlayed INT, Wins Int, Losses INT, Position INT, Points INT, empId INT UNIQUE, FOREIGN KEY (empId) REFERENCES users(empId)  )";
             stmt.executeUpdate(query);
             query = "insert into teamtable values(" + t.getTeamid() + ",'" + t.getName() + "','" + t.getMatchesPlayed() + "', '" + t.getWins() + "','" + t.getLosses() + "','" + t.getPosition() + "','" + t.getPoints() + "','" + t.getEmpId() + "' )";
             stmt.executeUpdate(query);

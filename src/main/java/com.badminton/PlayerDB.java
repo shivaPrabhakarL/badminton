@@ -1,6 +1,7 @@
 package com.badminton;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 
 public class PlayerDB {
@@ -147,6 +148,67 @@ public class PlayerDB {
         }
     }
 
+    public int addTournament(String tournName, String teamName)
+    {
+        String mquery = "insert into TournamentTeams (tournamentName ,teamName) values (' "+ tournName +"','"+teamName+"');";
+        System.out.println(mquery);
+        try {
+            int k =    stmt.executeUpdate(mquery);
+            return k;
+        }
+        catch(SQLException e)
+        {
+            return 0;
+        }
 
+    }
+
+    public int playersTeamUpdate(String query)
+    {
+        try
+        {
+            int k = stmt.executeUpdate(query);
+            return k;
+        }
+        catch (SQLException e)
+        {
+            return  0;
+        }
+    }
+
+    public ArrayList<String> getPlayersByTeam(String team){
+        try{
+            String query = "select firstName,lastName from users where team = '"+team+"';";
+             ResultSet rs = stmt.executeQuery(query);
+            ArrayList<String> playerName = new ArrayList<>();
+            while(rs.next()){
+                String fname = rs.getString("firstName");
+                String lname = rs.getString("lastName");
+                String name = fname+" "+lname;
+                playerName.add(name);
+            }
+            System.out.println(playerName);
+            return playerName;
+        }catch (Exception s){
+            s.printStackTrace();
+            return null;
+        }
+    }
+
+    public  ArrayList<String> listAllByTour(String tour){
+        try{
+            String query = "select teamName from TournamentTeams where tournamentName = '"+tour+"';";
+            ResultSet rs =  stmt.executeQuery(query);
+            ArrayList<String> teamName = new ArrayList<>();
+            while(rs.next()){
+                teamName.add(rs.getString("teamName"));
+            }
+            return teamName;
+        }catch (SQLException q) {
+            String response = "Sql query not correct or no such data.";
+            System.out.println(response);
+            return null;
+        }
+    }
 
 }

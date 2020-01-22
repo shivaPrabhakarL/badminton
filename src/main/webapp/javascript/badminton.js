@@ -1,18 +1,12 @@
 
-     function newLoad(){
-        const body = document.body;
-        body.removeChild(document.getElementById('navbar'));
-              try{
-                       body.removeChild(document.getElementById('playerForm'));
-              }catch(error){
-                 try{
-                     body.removeChild(document.getElementById('adminForm'));
-                 }catch(error){}
-              }
-              loadHome();
-     }
+//     function newLoad(){
+//               loadHome();
+              
+//      }
 
 function loadHome(){
+
+     
 
       var navbar=document.createElement('nav');
       navbar.setAttribute('class','homebar');
@@ -119,8 +113,7 @@ function loadHome(){
     }
     
     
-     const div1 = document.createElement('div');
-     div1.setAttribute('id','appp');
+     
     
      
       $(document).on("click","#logoutBtn", function(){

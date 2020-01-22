@@ -34,15 +34,21 @@ public class CreateTournament extends HttpServlet {
             for (String value : s)
                 name.append(value).append("-");
         }
-        Cookie cTourName = new Cookie("tourName", name.toString().trim());
+        String na = name.toString().trim();
+        Cookie cTourName = new Cookie("tourName", na);
 
         cTourName.setMaxAge(60 * 60 * 24 * 15);// 15 days
+        System.out.println(cTourName.getValue());
         resp.addCookie(cTourName);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("AdminDashboard.html");
         System.out.println("tour cookie= "+cTourName.getValue());
          requestDispatcher.forward(req, resp);
         String respString = "s";
         System.out.println(respString);
+        Cookie[] cook = req.getCookies();
+        for(int i=0;i<cook.length;i++){
+            System.out.println(cook[i].getValue());
+        }
         p.write(respString);
     }
 
